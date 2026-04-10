@@ -1,10 +1,25 @@
 # Desafio Nology
 
-Este repositório contém a solução para o desafio técnico da Nology, incluindo:
+Solução desenvolvida para o desafio técnico da Nology: uma calculadora de cashback com backend em FastAPI, frontend estático e persistência das consultas em PostgreSQL.
 
-- um backend em FastAPI
-- um frontend estático em HTML, CSS e JavaScript
-- a resolução da questão 5 no arquivo [`5_cashback.py`](C:\Users\mario\OneDrive\Documents\vscode\nology\5_cashback.py)
+Aplicação publicada: [https://nology-1.onrender.com/](https://nology-1.onrender.com/)
+
+## O que foi desenvolvido
+
+- backend em FastAPI para cálculo e consulta de cashback
+- frontend em HTML, CSS e JavaScript puro
+- persistência das consultas por IP em PostgreSQL
+- resolução isolada da questão 5 em `5_cashback.py`
+
+## Regras de negócio
+
+O cashback segue a ordem abaixo:
+
+1. calcular 5% sobre o valor final pago
+2. aplicar 10% de bônus sobre o cashback base para clientes VIP
+3. dobrar o cashback final em compras acima de R$ 500
+
+Essa ordem foi mantida porque ela aparece explicitamente no enunciado do desafio.
 
 ## Estrutura do projeto
 
@@ -17,37 +32,45 @@ nology/
 └── .env.example        # Variáveis de ambiente locais
 ```
 
-## Regras de negócio
-
-O cálculo do cashback segue estas regras:
-
-- o cashback base é 5% do valor final pago
-- clientes VIP recebem 10% de bônus sobre o cashback base
-- compras acima de R$ 500 recebem o dobro do cashback
-- primeiro é calculado o cashback base, depois o bônus VIP
-
-## Aplicação publicada
-
-A aplicação pode ser acessada em:
-
-[https://nology-1.onrender.com/](https://nology-1.onrender.com/)
-
 ## Backend
 
-O backend foi desenvolvido com FastAPI e é responsável por:
+O backend foi organizado em camadas para separar responsabilidades:
 
-- calcular o cashback
-- registrar as consultas no banco de dados
-- listar o histórico das últimas consultas por IP
+- `routers`: define os endpoints da API
+- `services`: concentra a regra de negócio
+- `repositories`: faz o acesso ao banco
+- `schemas`: valida e serializa os dados
+- `models`: define os modelos ORM
+- `database`: configura conexão e sessão
 
-### Tecnologias
+Tecnologias usadas:
 
 - Python
 - FastAPI
 - SQLAlchemy
 - PostgreSQL
 
-### Como rodar localmente
+O backend também utiliza Pydantic para validar os dados recebidos e retornados pela API.
+
+## Frontend
+
+O frontend foi construído com HTML, CSS e JavaScript puro, com foco em um fluxo simples:
+
+- informar o valor final pago
+- selecionar o tipo de cliente
+- consultar o cashback
+- visualizar o histórico das últimas consultas
+
+Optei por pedir diretamente o valor final da compra porque essa é a informação usada pela regra de negócio e isso reduz complexidade para o usuário final.
+
+## Questão 5
+
+A resolução isolada da questão 5 está em `5_cashback.py`, com a lógica de:
+
+- calcular o valor final após desconto
+- calcular o cashback conforme as regras do desafio
+
+## Como rodar localmente
 
 1. Instale as dependências:
 
@@ -61,8 +84,7 @@ pip install -r app/requirements.txt
 docker compose up -d
 ```
 
-3. Configure o arquivo `.env` com o conteúdo de `.env.example`.
-
+3. Configure o `.env` com base no `.env.example`.
 
 4. Rode a API:
 
@@ -71,42 +93,11 @@ cd app
 uvicorn main:app --reload
 ```
 
-A documentação da API ficará disponível em:
+Documentação da API:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
-
-## Frontend
-
-O frontend foi desenvolvido com:
-
-- HTML
-- CSS
-- JavaScript puro
-
-Ele permite:
-
-- informar o valor da compra
-- selecionar o tipo de cliente
-- consultar o cashback
-- visualizar o histórico das consultas
-
-## Questão 5
-
-A resolução isolada da questão 5 está no arquivo `5_cashback.py`.
-
-Esse arquivo contém a lógica principal para:
-
-- calcular o valor final após desconto
-- calcular o cashback de acordo com as regras do desafio
-
-## Banco de dados
-
-O projeto usa PostgreSQL.
-
-No ambiente local, o banco pode ser iniciado com o arquivo `compose.yaml`.
-
 
 ## Autor
 
