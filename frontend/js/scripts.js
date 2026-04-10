@@ -33,6 +33,11 @@ function mostrar_mensagem(texto, tipo = "erro") {
     }, 2000);
 }
 
+function formatar_data_backend(data_string) {
+     if (data_string.endsWith("Z")) return new Date(data_string);
+    return new Date(`${data_string}Z`);
+}
+
 function criar_card_consulta(tipo_cliente, valor_pago, cashback, data) {
     const div = document.createElement("div")
     div.classList.add("consulta");
@@ -82,7 +87,7 @@ async function carregar_historico() {
         }
 
         data.forEach((consulta) => {
-            criar_card_consulta(consulta.tipo_cliente, consulta.valor_pago, consulta.cashback, new Date(consulta.created_at))
+            criar_card_consulta(consulta.tipo_cliente, consulta.valor_pago, consulta.cashback, formatar_data_backend(consulta.created_at))
         })
     }
     catch (err) {
