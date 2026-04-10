@@ -16,8 +16,8 @@ def calcular_cashback(valor_final: float, vip: bool):
         print(f"Cashback gerado: R$ {cashback_final:.2f}")
         return cashback_final
 
-calcular_cashback(calcular_valor_final(600, 0.20), True)
-calcular_cashback(calcular_valor_final(600, 0.1), False)
-calcular_cashback(calcular_valor_final(600, 0.15), True)
+calcular_cashback(calcular_valor_final(600, 0.20), True) # Exemplo da questão 2
+calcular_cashback(calcular_valor_final(600, 0.1), False) # Exemplo da questão 3
+calcular_cashback(calcular_valor_final(600, 0.15), True) # Exemplo da questão 4
 
 
