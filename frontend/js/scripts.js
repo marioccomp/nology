@@ -63,7 +63,7 @@ async function carregar_historico() {
     consultas_div.innerHTML = "";
 
     try {
-        const response = await fetch("/cashback/listar", {
+        const response = await fetch("https://nology.onrender.com/cashback/listar", {
             method: "GET"
         })
 
@@ -106,7 +106,7 @@ form.addEventListener("submit", async (e) => {
         const form_data = new FormData(form)
         const valor = Number(form_data.get("valor"))
         const tipo = form_data.get("tipo_cliente")
-        const response = await fetch("/cashback/calcular", {
+        const response = await fetch("https://nology.onrender.com/cashback/calcular", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
