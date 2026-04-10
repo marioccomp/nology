@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/scripts.js" defer></script>
+    <title>Calculadora de Cashback</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Calculadora de Cashbacks</h1>
+    </div>
+
+    <div class="cashback_container">
+        <div id="mensagem" class="mensagem" aria-live="polite"></div>
+        <form>
+            <label>Insira o valor pago na sua compra após todos os descontos:</label>
+            <div class="input_grupo">
+                <span>R$</span>
+                <input type="number" name="valor" min="0.01" step="0.01" placeholder="ex: 600,50">
+
+            </div>
+            <label>Informe o tipo de cliente que você é:</label>
+            <select required name="tipo_cliente">
+                <option disabled selected hidden value="">Escolha uma opção</option>
+                <option value="VIP">Vip</option>
+                <option value="REGULAR">Regular</option>
+            </select>
+            <button type="submit">Consultar</button>
+        </form>
+        <div class="consulta_atual">
+            <p class="fechar">X</p>
+        </div>
+        <div class="historico">
+            <h3 class="titulo_historico">Abaixo você pode ver suas últimas consultas</h3>
+            <div class="consultas">
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>

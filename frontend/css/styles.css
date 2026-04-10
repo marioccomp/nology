@@ -1,0 +1,239 @@
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.header {
+    background: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.header h1 {
+    font-weight: 750;
+    margin: 0;
+}
+
+.cashback_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem;
+    gap: 1.5rem;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+     background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+    gap: .4rem;
+}
+
+form label {
+    margin-bottom: .2rem;
+}
+
+
+
+.input_grupo span {
+    font-weight: bold;
+    margin-right: .3rem;
+}
+
+
+.input_grupo input,
+form select {
+    width: 100%;
+    padding: .7rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input_grupo {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1.2rem;
+}
+
+.input_grupo span {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+form select {
+    cursor: pointer;
+}
+
+
+button {
+    cursor: pointer;
+    padding: .5rem;
+    background-color: rgb(128, 128, 214);
+    color: white;
+    font-weight: 700;
+    border: 1px solid #a6a7d3;
+    border-radius: 5px;
+    opacity: .7;
+    transition: .2s;
+    margin-top: .8rem;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.titulo_historico {
+    text-align: center;
+}
+
+.historico {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.consulta {
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+}
+
+.consulta span {
+    font-weight: 700;
+}
+
+.consultas {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+   
+}
+
+.mensagem {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 1000;
+    padding: .95rem 1rem;
+    border-radius: 10px;
+    display: none;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    animation: fadeInToast 0.25s ease-out;
+}
+
+.mensagem.erro {
+    background-color: #ffe5e5;
+    color: #b00020;
+    border: 1px solid #ffb3b3;
+}
+
+.mensagem.sucesso {
+    background-color: #e6ffed;
+    color: #067d3c;
+    border: 1px solid #b3ffd1;
+}
+
+.consulta_atual h4 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.consulta_atual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #b7ebc6;
+    background: #fff;   
+    padding: 1.2rem 1.8rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+}
+
+.consulta_atual {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInToast {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fechar {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.disable {
+    display: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+@media (max-width: 600px) {
+    .cashback_container {
+        padding: 1.5rem 1rem;
+    }
+
+    form,
+    .historico,
+    .consulta_atual {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .consulta {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.7rem;
+    }
+
+    .mensagem {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+    }
+}
