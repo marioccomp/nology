@@ -1,9 +1,11 @@
 
 const consultas_div = document.querySelector(".consultas")
 const form = document.querySelector("form")
-const mensagemDiv = document.getElementById("mensagem");
+const mensagem_div = document.getElementById("mensagem");
 const div_resultado = document.querySelector(".consulta_atual")
 const tituloHistorico = document.querySelector(".titulo_historico");
+const botao = document.querySelector("button");
+
 
 function formatar_moeda(valor) {
     return valor.toLocaleString("pt-BR", {
@@ -23,13 +25,13 @@ function formatar_data(data) {
 }
 
 function mostrar_mensagem(texto, tipo = "erro") {
-    mensagemDiv.textContent = texto;
-    mensagemDiv.className = `mensagem ${tipo}`;
-    mensagemDiv.style.display = "block";
+    mensagem_div.textContent = texto;
+    mensagem_div.className = `mensagem ${tipo}`;
+    mensagem_div.style.display = "block";
 
 
     setTimeout(() => {
-        mensagemDiv.style.display = "none";
+        mensagem_div.style.display = "none";
     }, 2000);
 }
 
@@ -60,6 +62,14 @@ function criar_card_resultado(tipo_cliente, valor_pago, cashback, data) {
     `
     div_resultado.classList.remove("disable")
     mostrar_mensagem("Consulta realizada com sucesso!", "sucesso");
+}
+
+function validar_formulario() {
+    const form_data = new FormData(form);
+    const valor = Number(form_data.get("valor"));
+    const tipo = form_data.get("tipo_cliente");
+
+    botao.disabled = !(valor > 0 && tipo);
 }
 
 
@@ -141,5 +151,10 @@ form.addEventListener("submit", async (e) => {
 
 window.addEventListener("DOMContentLoaded", async () => {
     div_resultado.classList.add("disable")
+    validar_formulario();
     await carregar_historico()
 })
+
+form.addEventListener("input", validar_formulario);
+form.addEventListener("change", validar_formulario);
+
