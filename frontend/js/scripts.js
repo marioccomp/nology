@@ -92,6 +92,7 @@ async function carregar_historico() {
 
 div_resultado.addEventListener("click", (e) => {
     if (e.target.classList.contains("fechar")) {
+        carregar_historico()
         div_resultado.classList.add("disable");
     }
 });
@@ -133,7 +134,7 @@ form.addEventListener("submit", async (e) => {
     }
 })
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
     div_resultado.classList.add("disable")
-    carregar_historico()
+    await carregar_historico()
 })
